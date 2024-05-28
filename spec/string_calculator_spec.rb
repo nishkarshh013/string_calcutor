@@ -15,5 +15,9 @@ RSpec.describe StringCalculator do
 		it 'should return the addition of any amounts of number' do
 			expect(StringCalculator.add("2,3,4, 5,6")).to eq(20)
 		end
+
+		it 'should handle new lines between the data instead of comma' do
+			expect(StringCalculator.add("2 \n3, 3, \n3")).to eq(11)
+		end
 	end
 end
