@@ -31,5 +31,13 @@ RSpec.describe StringCalculator do
 		it "should handle more delimiter instead of commas" do
 			expect(StringCalculator.add("//;\n1;2")).to eq(3)
 		end 
+
+		it "should throw exception 'negatives not allowed' " do
+			expect { StringCalculator.add("-3") }.to raise_error("negatives not allowed: -3")
+		end
+
+		it "should throw exception 'negatives not allowed' with more than one number " do
+			expect { StringCalculator.add("-3 -2 -1 6") }.to raise_error("negatives not allowed: -3 -2 -1")
+		end
 	end
 end

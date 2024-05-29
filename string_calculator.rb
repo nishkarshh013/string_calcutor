@@ -3,9 +3,11 @@
 class StringCalculator
 	def self.add(input)
 		return 0 if input.empty?
+		negatives = input.scan(/-\d+/).join(" ")
+		raise "negatives not allowed: #{negatives}" if input.to_i.negative?
 		numbers_array = remove_delimiter(input)
 		remove_zero  = remove_zero(numbers_array)
-		remove_zero.sum
+		remove_zero.sum 
 	end
 
 	private
