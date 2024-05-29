@@ -19,5 +19,17 @@ RSpec.describe StringCalculator do
 		it 'should handle new lines between the data instead of comma' do
 			expect(StringCalculator.add("2 \n3, 3, \n3")).to eq(11)
 		end
+
+		it "should handle different delimiter	instead of commas" do
+			expect(StringCalculator.add("//;\n1;2")).to eq(3)
+		end
+
+		it "should handle more delimiter instead of commas" do
+			expect(StringCalculator.add("/(?<=2 6[?;.!3\n\ 4/43/|%""':'])\ /")).to eq(58)
+		end
+
+		it "should handle more delimiter instead of commas" do
+			expect(StringCalculator.add("//;\n1;2")).to eq(3)
+		end 
 	end
 end

@@ -3,7 +3,19 @@
 class StringCalculator
 	def self.add(input)
 		return 0 if input.empty?
-		numbers = input.split(/,|\n/).map(&:to_i)
-		numbers.sum
+		numbers_array = remove_delimiter(input)
+		remove_zero  = remove_zero(numbers_array)
+		remove_zero.sum
+	end
+
+	private
+
+	def self.remove_delimiter(input)
+		input.tr('^0-9', ' ').strip.split(" ").map(&:to_i)
+	end
+
+	def self.remove_zero(numbers_array)
+		numbers_array.delete(0)
+		return numbers_array
 	end
 end
