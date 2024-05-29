@@ -45,7 +45,23 @@ RSpec.describe StringCalculator do
 		end
 
 		it "should return zero when all the numbers are greater than zero" do
-			expect(StringCalculator.add('1001 1002, 2002')).to eq(0)
+			expect(StringCalculator.add("1001 1002, 2002")).to eq(0)
+		end
+
+		it "should be of any length" do
+			expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+		end
+
+		it "should be of any length" do
+			expect(StringCalculator.add("//[***]\n1***,.\t\n2***3::fd,4")).to eq(10)
+		end
+
+		it "should allow multiple delimiters" do
+			expect(StringCalculator.add("//[*][%]\n1*2%3")).to eq(6)
+		end
+
+		it "should handle multiple delimiters with length longer than one char" do
+			expect(StringCalculator.add("//;\n1;2;3;4")).to eq(10)
 		end
 	end
 end
